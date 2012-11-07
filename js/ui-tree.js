@@ -12,10 +12,14 @@
 (function () {
     // Private function
     var logger = function (log, logTo) {
-			if (typeof debug !== 'undefined') {	
-				$('<div></div>').appendTo(logTo || '#log').text(new Date().toGMTString() + ' : ui-tree.js - '  + log);
-			}
-		},
+      if (typeof debug !== 'undefined') {
+        var $logEl = $(logTo || '#log');
+        if ($logEl && $logEl.length){
+          $('<div></div>').appendTo($logEl).text(new Date().toGMTString() + ' : ui-tree.js - '  + log);
+          $logEl.scrollTop($logEl[0].scrollHeight);
+        }
+      }
+    },
 		templateEngine = new ko.jqueryTmplTemplateEngine(),
 		typeValueOrDefault = function (param, type, viewModel) {
 			var globalDefault = viewModel.defaults[param];
