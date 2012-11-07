@@ -243,7 +243,7 @@
 				viewModel.handlers.doubleClick(this);
 			}.bind(this);
 			
-			this.clicked = function(event) {
+			this.clicked = function(o, event) {
 				switch (event.which) {
 					case 1:
 						this.selectNode();
